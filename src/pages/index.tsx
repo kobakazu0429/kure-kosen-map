@@ -1,4 +1,5 @@
 import React from "react";
+import { KureKosenMap } from "@/components/KureKosenMap";
 
 const links = [
   { href: "https://github.com/vercel/next.js", label: "GitHub" },
@@ -38,6 +39,7 @@ export default function TopPage() {
           Next.js + Tailwind CSS
         </h1>
       </div>
+      <KureKosenMap />
     </div>
   );
 }

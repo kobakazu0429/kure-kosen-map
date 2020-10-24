@@ -2,6 +2,7 @@ import React from "react";
 import App from "next/app";
 
 import "../styles/index.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 export default class MyApp extends App {
   static async getInitialProps({ Component, ctx }: any) {
