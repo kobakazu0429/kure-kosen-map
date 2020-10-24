@@ -1,5 +1,6 @@
 import React from "react";
 import App from "next/app";
+import { RecoilRoot } from "recoil";
 
 import "../styles/index.css";
 import "mapbox-gl/dist/mapbox-gl.css";
@@ -18,6 +19,10 @@ export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
 
-    return <Component {...pageProps} />;
+    return (
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    );
   }
 }
