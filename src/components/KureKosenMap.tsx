@@ -4,6 +4,7 @@ import mapboxgl from "mapbox-gl";
 import { mapState } from "@/recoil/atom/kurekosenmap";
 import { useSetRecoilState } from "recoil";
 import { mapOptions } from "@/mapbox";
+import { layer } from "@/mapbox/layers";
 
 export const KureKosenMap = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -23,6 +24,27 @@ export const KureKosenMap = () => {
         })
       );
       newMap.addControl(new mapboxgl.FullscreenControl());
+
+      newMap.on("load", () => {
+        newMap.addLayer(layer);
+
+        newMap.on("click", "sample", (e) => {
+          const description =
+            e.features?.[0].properties?.description ?? "no description";
+
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(description)
+            .addTo(newMap);
+        });
+
+        newMap.on("mouseenter", "sample", () => {
+          newMap.getCanvas().style.cursor = "pointer";
+        });
+
+        newMap.on("mouseleave", "sample", () => {
+          newMap.getCanvas().style.cursor = "";
+        });
       });
 
       setMap(newMap);
