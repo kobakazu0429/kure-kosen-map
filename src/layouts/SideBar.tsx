@@ -69,7 +69,9 @@ export const SideBarLayout: FC<Props> = (props) => {
           }
         `}
       </style>
-      <div className="w-full main">{props.mainComp}</div>
+      <div className="w-full main lg:p-8 bg-gray-200 bg-opacity-25 outline-none">
+        {props.mainComp}
+      </div>
     </div>
   );
 };

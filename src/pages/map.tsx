@@ -35,6 +35,6 @@ const Nav = () => {
   );
 };
 
-export default function TopPage() {
+export default function MapPage() {
   return <SideBarLayout sideComp={<Nav />} mainComp={<KureKosenMap />} />;
 }
