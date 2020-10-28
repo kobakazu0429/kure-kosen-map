@@ -1,55 +1,45 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import mapboxgl from "mapbox-gl";
-
-import { mapState } from "@/recoil/atom/kurekosenmap";
-import { useSetRecoilState } from "recoil";
-import { mapOptions } from "@/mapbox";
 import { layer } from "@/mapbox/layers";
+import { useMap } from "@/mapbox";
 
 export const KureKosenMap = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const setMap = useSetRecoilState(mapState);
+  const [map, mapContainerRef] = useMap();
 
-  useEffect(() => {
-    if (ref.current) {
-      const newMap = new mapboxgl.Map({
-        ...mapOptions,
-        container: ref.current,
-      });
-      newMap.addControl(
+  if (map) {
+    map.addInitializer((_e, mapbox) => mapbox.addLayer(layer));
+
+    map.addInitializer((_e, mapbox) => {
+      mapbox.addControl(
         new mapboxgl.NavigationControl({
           showCompass: true,
           showZoom: true,
           visualizePitch: true,
         })
       );
-      newMap.addControl(new mapboxgl.FullscreenControl());
+      mapbox.addControl(new mapboxgl.FullscreenControl());
+    });
 
-      newMap.on("load", () => {
-        newMap.addLayer(layer);
+    map.addInitializer((_e, mapbox) => {
+      mapbox.on("click", "sample", (e) => {
+        const description =
+          e.features?.[0].properties?.description ?? "no description";
 
-        newMap.on("click", "sample", (e) => {
-          const description =
-            e.features?.[0].properties?.description ?? "no description";
-
-          new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(description)
-            .addTo(newMap);
-        });
-
-        newMap.on("mouseenter", "sample", () => {
-          newMap.getCanvas().style.cursor = "pointer";
-        });
-
-        newMap.on("mouseleave", "sample", () => {
-          newMap.getCanvas().style.cursor = "";
-        });
+        new mapboxgl.Popup()
+          .setLngLat(e.lngLat)
+          .setHTML(description)
+          .addTo(mapbox);
       });
 
-      setMap(newMap);
-    }
-  }, []);
+      mapbox.on("mouseenter", "sample", () => {
+        mapbox.getCanvas().style.cursor = "pointer";
+      });
+
+      mapbox.on("mouseleave", "sample", () => {
+        mapbox.getCanvas().style.cursor = "";
+      });
+    });
+  }
 
   return (
     <>
@@ -72,7 +62,10 @@ export const KureKosenMap = () => {
           }
         `}
       </style>
-      <div ref={ref} className="w-full h-full lg:rounded-3xl outline-none" />
+      <div
+        ref={mapContainerRef}
+        className="w-full h-full lg:rounded-3xl outline-none"
+      />
     </>
   );
 };

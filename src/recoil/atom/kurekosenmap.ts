@@ -1,7 +1,8 @@
 import { atom } from "recoil";
+import { Map } from "@/mapbox/hooks";
 
-export const mapState = atom<mapboxgl.Map>({
+export const mapState = atom<Map | null>({
   key: "mapState",
-  default: {} as mapboxgl.Map,
+  default: null,
   dangerouslyAllowMutability: true,
 });
