@@ -1,34 +1,33 @@
-import React, { useCallback, useState, FC } from "react";
+import React, { FC } from "react";
+import { toggleSideBar, useSidebar } from "@/recoil/atom/sidebar";
 
 interface Props {
   sideComp: React.ReactNode;
   mainComp: React.ReactNode;
 }
 
-const ToggleIcon = (props: { visible: boolean }) => (
-  <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
-    <path
-      className={props.visible ? "block" : "hidden"}
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-    />
-    <path
-      className={props.visible ? "hidden" : "block"}
-      fillRule="evenodd"
-      clipRule="evenodd"
-      d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-    />
-  </svg>
-);
+const ToggleIcon = () => {
+  const visible = useSidebar();
+  return (
+    <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
+      <path
+        className={visible ? "hidden" : "block"}
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+      />
+      <path
+        className={visible ? "block" : "hidden"}
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+      />
+    </svg>
+  );
+};
 
 export const SideBarLayout: FC<Props> = (props) => {
-  const [isOpen, setOpen] = useState(false);
-
-  const toggle = useCallback(() => {
-    setOpen((p) => !p);
-  }, []);
-
+  const toggle = toggleSideBar();
   return (
     <div className="lg:flex flex-col lg:flex-row w-full h-full">
       <style jsx>
@@ -50,7 +49,7 @@ export const SideBarLayout: FC<Props> = (props) => {
             className="rounded-lg lg:hidden focus:outline-none focus:shadow-outline"
             onClick={toggle}
           >
-            <ToggleIcon visible={isOpen} />
+            <ToggleIcon />
           </button>
         </div>
         {props.sideComp}

@@ -1,7 +1,4 @@
 import React from "react";
-import { KureKosenMap } from "@/components/KureKosenMap";
-import { useRecoilValue } from "recoil";
-import { mapState } from "@/recoil/atom/kurekosenmap";
 
 const links = [
   { href: "https://github.com/vercel/next.js", label: "GitHub" },
@@ -33,7 +30,6 @@ function Nav() {
 }
 
 export default function TopPage() {
-  const map = useRecoilValue(mapState);
   return (
     <div>
       <Nav />
@@ -42,26 +38,6 @@ export default function TopPage() {
           Next.js + Tailwind CSS
         </h1>
       </div>
-      <div>
-        <button
-          className="h-8 w-40 rounded bg-green-200 mx-10"
-          onClick={(_e) => {
-            map?.mapbox?.zoomIn();
-          }}
-        >
-          zoom +
-        </button>
-
-        <button
-          className="h-8 w-40 rounded bg-green-200 mx-10"
-          onClick={(_e) => {
-            map?.mapbox?.zoomOut();
-          }}
-        >
-          zoom -
-        </button>
-      </div>
-      <KureKosenMap />
     </div>
   );
 }
