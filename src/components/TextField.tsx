@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 
 interface Props {
-  icon: React.ReactNode;
+  icon: React.ReactChild;
 }
 
-export const TextField: FC<Props & React.ComponentPropsWithRef<"input">> = ({
+export const TextField: FC<Props & React.HTMLProps<HTMLInputElement>> = ({
   type,
   name,
   placeholder,
