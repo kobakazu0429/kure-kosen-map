@@ -10,12 +10,15 @@ const ToggleIcon = () => {
   const visible = useSidebar();
   return (
     <svg fill="currentColor" viewBox="0 0 20 20" className="w-6 h-6">
+      {/* hamburger icon */}
       <path
         className={visible ? "hidden" : "block"}
         fillRule="evenodd"
         clipRule="evenodd"
         d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
       />
+
+      {/* close icon */}
       <path
         className={visible ? "block" : "hidden"}
         fillRule="evenodd"
@@ -28,6 +31,8 @@ const ToggleIcon = () => {
 
 export const SideBarLayout: FC<Props> = (props) => {
   const toggle = toggleSideBar();
+  const visible = useSidebar();
+
   return (
     <div className="lg:flex flex-col lg:flex-row w-full h-full">
       <style jsx>
@@ -52,7 +57,13 @@ export const SideBarLayout: FC<Props> = (props) => {
             <ToggleIcon />
           </button>
         </div>
-        {props.sideComp}
+        <nav
+          className={`flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto ${
+            visible ? "block" : "hidden"
+          }`}
+        >
+          {props.sideComp}
+        </nav>
       </div>
 
       <style jsx>
