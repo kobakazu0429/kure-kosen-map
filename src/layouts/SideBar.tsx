@@ -69,17 +69,11 @@ export const SideBarLayout: FC<Props> = (props) => {
       <style jsx>
         {`
           .main {
-            height: calc(100% - 59px);
-          }
-
-          @media (min-width: 1024px) {
-            .main {
-              height: 100%;
-            }
+            height: calc(100% - 59px); // 59px is header nav height.
           }
         `}
       </style>
-      <div className="w-full main lg:p-8 bg-gray-200 bg-opacity-25 outline-none">
+      <div className="w-full main lg:p-8 lg:h-full bg-gray-200 bg-opacity-25 outline-none">
         {props.mainComp}
       </div>
     </div>
