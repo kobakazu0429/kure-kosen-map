@@ -46,7 +46,7 @@ export default function TopPage() {
         <button
           className="h-8 w-40 rounded bg-green-200 mx-10"
           onClick={(_e) => {
-            map.zoomIn();
+            map?.mapbox?.zoomIn();
           }}
         >
           zoom +
@@ -55,7 +55,7 @@ export default function TopPage() {
         <button
           className="h-8 w-40 rounded bg-green-200 mx-10"
           onClick={(_e) => {
-            map.zoomOut();
+            map?.mapbox?.zoomOut();
           }}
         >
           zoom -
