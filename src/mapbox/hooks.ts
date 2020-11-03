@@ -1,19 +1,19 @@
 import { RefObject, useEffect, useRef } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import mapboxgl from "mapbox-gl";
+import { eventmit, Eventmitter } from "eventmit";
 
 import { mapState } from "@/recoil/atom/kurekosenmap";
 import { mapOptions } from "./config";
+import { registerLayers } from "./layers";
 
-type Callback = (e: mapboxgl.EventData, map: mapboxgl.Map) => void;
-
-export class Map {
+export class MapWrapper {
   constructor() {
-    this.initializer = [];
+    this.initialize = eventmit<mapboxgl.Map>();
   }
 
   public mapbox?: mapboxgl.Map;
-  private initializer: Callback[];
+  public initialize: Eventmitter<mapboxgl.Map>;
 
   public createMapbox(container: HTMLDivElement) {
     this.mapbox = new mapboxgl.Map({
@@ -21,35 +21,24 @@ export class Map {
       container,
     });
   }
-
-  public addInitializer(callback: Callback) {
-    this.initializer.push(callback);
-  }
-
-  public initialize() {
-    if (this.mapbox) {
-      // throw new Error("not set mapbox");
-
-      this.mapbox.on("load", (e) => {
-        this.initializer.forEach((callback) => {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          callback(e, this.mapbox!);
-        });
-      });
-    }
-  }
 }
 
-export function useMap(): [Map | null, RefObject<HTMLDivElement>] {
+export function useMap(): [MapWrapper | null, RefObject<HTMLDivElement>] {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const [map, setMap] = useRecoilState(mapState);
 
   useEffect(() => {
-    const _map = new Map();
+    const _map = new MapWrapper();
     setMap(_map);
+    registerLayers(_map);
+
     if (mapContainerRef.current) {
       _map.createMapbox(mapContainerRef.current);
-      _map.initialize();
+      _map.mapbox?.on("load", (_e) => {
+        console.log("load");
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        _map.initialize.emit(_map.mapbox!);
+      });
     }
   }, []);
 
@@ -57,5 +46,5 @@ export function useMap(): [Map | null, RefObject<HTMLDivElement>] {
 }
 
 export function useMapbox() {
-  return useRecoilValue(mapState) as Map;
+  return useRecoilValue(mapState);
 }

@@ -1,15 +1,13 @@
 import React from "react";
 import mapboxgl from "mapbox-gl";
-import { layer } from "@/mapbox/layers";
+
 import { useMap } from "@/mapbox";
 
 export const KureKosenMap = () => {
   const [map, mapContainerRef] = useMap();
 
   if (map) {
-    map.addInitializer((_e, mapbox) => mapbox.addLayer(layer));
-
-    map.addInitializer((_e, mapbox) => {
+    map.initialize.on((mapbox) => {
       mapbox.addControl(
         new mapboxgl.NavigationControl({
           showCompass: true,
@@ -20,7 +18,7 @@ export const KureKosenMap = () => {
       mapbox.addControl(new mapboxgl.FullscreenControl());
     });
 
-    map.addInitializer((_e, mapbox) => {
+    map.initialize.on((mapbox) => {
       mapbox.on("click", "sample", (e) => {
         const description =
           e.features?.[0].properties?.description ?? "no description";

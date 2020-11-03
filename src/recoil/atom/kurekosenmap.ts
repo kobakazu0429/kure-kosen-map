@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { Map } from "@/mapbox/hooks";
+import { MapWrapper } from "@/mapbox/hooks";
 
-export const mapState = atom<Map | null>({
+export const mapState = atom<MapWrapper | null>({
   key: "mapState",
   default: null,
   dangerouslyAllowMutability: true,

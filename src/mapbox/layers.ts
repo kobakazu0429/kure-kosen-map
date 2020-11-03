@@ -1,4 +1,6 @@
-const geojson: mapboxgl.AnySourceData = {
+import { MapWrapper } from "./hooks";
+
+const kureKosenPolygons: mapboxgl.AnySourceData = {
   type: "geojson",
   data: {
     type: "FeatureCollection",
@@ -137,12 +139,55 @@ const geojson: mapboxgl.AnySourceData = {
   },
 };
 
-export const layer: mapboxgl.Layer = {
+export const kureKosen: mapboxgl.Layer = {
   id: "sample",
   type: "fill",
-  source: geojson,
+  source: kureKosenPolygons,
   paint: {
     "fill-color": "#088",
     "fill-opacity": 0.6,
   },
 };
+
+export const toggleableLayerIds = ["contours", "museums"];
+
+export const museums: mapboxgl.Layer = {
+  id: "museums",
+  type: "circle",
+  source: { type: "vector", url: "mapbox://mapbox.2opop9hr" },
+  layout: {
+    visibility: "visible",
+  },
+  paint: {
+    "circle-radius": 8,
+    "circle-color": "rgba(55,148,179,1)",
+  },
+  "source-layer": "museum-cusco",
+};
+
+export const contours: mapboxgl.Layer = {
+  id: "contours",
+  type: "line",
+  source: {
+    type: "vector",
+    url: "mapbox://mapbox.mapbox-terrain-v2",
+  },
+  "source-layer": "contour",
+  layout: {
+    visibility: "visible",
+    "line-join": "round",
+    "line-cap": "round",
+  },
+  paint: {
+    "line-color": "#877b59",
+    "line-width": 1,
+  },
+};
+
+const layers = [kureKosen, museums, contours];
+
+export function registerLayers(map: MapWrapper) {
+  map.initialize.on((mapbox) =>
+    layers.forEach((layer) => mapbox.addLayer(layer))
+  );
+}

@@ -12,6 +12,7 @@
     "lint": "eslint --ext .ts,.tsx ./src --fix"
   },
   "dependencies": {
+    "eventmit": "^1.1.0",
     "mapbox-gl": "^1.12.0",
     "next": "^9.5.5",
     "react": "^17.0.1",
