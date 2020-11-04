@@ -1,43 +1,8 @@
 import React from "react";
-import mapboxgl from "mapbox-gl";
-
-import { useMap } from "@/mapbox";
+import { useMapInitialize } from "@/mapbox";
 
 export const KureKosenMap = () => {
-  const [map, mapContainerRef] = useMap();
-
-  if (map) {
-    map.initialize.on((mapbox) => {
-      mapbox.addControl(
-        new mapboxgl.NavigationControl({
-          showCompass: true,
-          showZoom: true,
-          visualizePitch: true,
-        })
-      );
-      mapbox.addControl(new mapboxgl.FullscreenControl());
-    });
-
-    map.initialize.on((mapbox) => {
-      mapbox.on("click", "sample", (e) => {
-        const description =
-          e.features?.[0].properties?.description ?? "no description";
-
-        new mapboxgl.Popup()
-          .setLngLat(e.lngLat)
-          .setHTML(description)
-          .addTo(mapbox);
-      });
-
-      mapbox.on("mouseenter", "sample", () => {
-        mapbox.getCanvas().style.cursor = "pointer";
-      });
-
-      mapbox.on("mouseleave", "sample", () => {
-        mapbox.getCanvas().style.cursor = "";
-      });
-    });
-  }
+  const mapContainerRef = useMapInitialize();
 
   return (
     <>

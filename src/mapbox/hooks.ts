@@ -1,11 +1,12 @@
-import { RefObject, useEffect, useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useEffect, useRef } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import mapboxgl from "mapbox-gl";
 import { eventmit, Eventmitter } from "eventmit";
 
 import { mapState } from "@/recoil/atom/kurekosenmap";
 import { mapOptions } from "./config";
 import { registerLayers } from "./layers";
+import { registerControls } from "./controls";
 
 export class MapWrapper {
   constructor() {
@@ -23,28 +24,33 @@ export class MapWrapper {
   }
 }
 
-export function useMap(): [MapWrapper | null, RefObject<HTMLDivElement>] {
+function register(map: MapWrapper) {
+  registerLayers(map);
+  registerControls(map);
+}
+
+export function useMapInitialize() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useRecoilState(mapState);
+  const setMap = useSetRecoilState(mapState);
 
   useEffect(() => {
-    const _map = new MapWrapper();
-    setMap(_map);
-    registerLayers(_map);
+    const map = new MapWrapper();
+    setMap(map);
+    register(map);
 
     if (mapContainerRef.current) {
-      _map.createMapbox(mapContainerRef.current);
-      _map.mapbox?.on("load", (_e) => {
-        console.log("load");
+      map.createMapbox(mapContainerRef.current);
+      map.mapbox?.on("load", (_e) => {
+        console.log("[Map]: loaded");
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        _map.initialize.emit(_map.mapbox!);
+        map.initialize.emit(map.mapbox!);
       });
     }
   }, []);
 
-  return [map, mapContainerRef];
+  return mapContainerRef;
 }
 
-export function useMapbox() {
+export function useMap() {
   return useRecoilValue(mapState);
 }

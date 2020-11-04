@@ -1,4 +1,9 @@
+import { popupMap } from "./popup";
 import { MapWrapper } from "./hooks";
+
+export const popuppableLayerIds = ["sample"];
+
+export const toggleableLayerIds = ["contours", "museums"];
 
 const kureKosenPolygons: mapboxgl.AnySourceData = {
   type: "geojson",
@@ -149,8 +154,6 @@ export const kureKosen: mapboxgl.Layer = {
   },
 };
 
-export const toggleableLayerIds = ["contours", "museums"];
-
 export const museums: mapboxgl.Layer = {
   id: "museums",
   type: "circle",
@@ -187,7 +190,8 @@ export const contours: mapboxgl.Layer = {
 const layers = [kureKosen, museums, contours];
 
 export function registerLayers(map: MapWrapper) {
-  map.initialize.on((mapbox) =>
-    layers.forEach((layer) => mapbox.addLayer(layer))
-  );
+  map.initialize.on((mapbox) => {
+    layers.forEach((layer) => mapbox.addLayer(layer));
+    popuppableLayerIds.forEach((layer) => popupMap(mapbox, layer));
+  });
 }
