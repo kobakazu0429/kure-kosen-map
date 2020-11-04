@@ -23,10 +23,8 @@
 // };
 
 export const mapOptions: Omit<mapboxgl.MapboxOptions, "container"> = {
-  // center: [132.601271, 34.232102],
-  center: [-71.97722138410576, -13.517379300798098],
-  zoom: 15,
-  // zoom: 17,
+  center: [132.601271, 34.232102],
+  zoom: 16.5,
   bearing: 21.148851039999840395,
   // hash: true,
   // style,

@@ -7,6 +7,7 @@ import { mapState } from "@/recoil/atom/kurekosenmap";
 import { mapOptions } from "./config";
 import { registerLayers } from "./layers";
 import { registerControls } from "./controls";
+import { registerPopups } from "./popup";
 
 export class MapWrapper {
   constructor() {
@@ -26,6 +27,7 @@ export class MapWrapper {
 
 function register(map: MapWrapper) {
   registerLayers(map);
+  registerPopups(map);
   registerControls(map);
 }
 

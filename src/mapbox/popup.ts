@@ -1,6 +1,8 @@
 import mapboxgl, { Map } from "mapbox-gl";
+import { MapWrapper } from "./hooks";
+import { popuppableLayerIds } from "./layers";
 
-export const popupMap = (map: Map, layerId: string) => {
+const popupMap = (map: Map, layerId: string) => {
   map.on("mouseenter", layerId, () => {
     map.getCanvas().style.cursor = "pointer";
   });
@@ -16,3 +18,9 @@ export const popupMap = (map: Map, layerId: string) => {
     new mapboxgl.Popup().setLngLat(lngLat).setHTML(description).addTo(map);
   });
 };
+
+export function registerPopups(map: MapWrapper) {
+  map.initialize.on((mapbox) => {
+    popuppableLayerIds.forEach((layer) => popupMap(mapbox, layer));
+  });
+}
