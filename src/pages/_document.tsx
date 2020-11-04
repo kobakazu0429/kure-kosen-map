@@ -5,8 +5,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="ja" className="h-full">
-        <Head></Head>
-        <style>{`#__next { height:100% } `}</style>
+        <Head>
+          <style>{`#__next { height:100% } `}</style>
+        </Head>
         <body className="h-full w-full">
           <Main />
           <NextScript />
