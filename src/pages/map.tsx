@@ -4,9 +4,7 @@ import { KureKosenMap } from "@/components/KureKosenMap";
 import { SearchField } from "@/components/TextField";
 import { useMap } from "@/mapbox";
 import { toggleableLayerIds } from "@/mapbox/layers";
-
-const className =
-  "block px-4 py-2 mt-2 w-full text-left text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline";
+import { baseButtonStyle } from "@/styles/button";
 
 type VisibleStatus = "none" | "visible";
 
@@ -30,13 +28,18 @@ const Nav = () => {
   return (
     <>
       <SearchField />
-      <button className={className}>Blog</button>
-      <button className={className}>Portfolio</button>
-      <button className={className}>About</button>
-      <button className={className}>Contact</button>
+      {["Blog", "Portfolio", "About", "Contact"].map((label) => (
+        <button className={`${baseButtonStyle} text-left`} key={label}>
+          {label}
+        </button>
+      ))}
       {toggleableLayerIds.map((id) => {
         return (
-          <button className={className} key={id} onClick={() => toggle(id)}>
+          <button
+            className={`${baseButtonStyle} text-left`}
+            key={id}
+            onClick={() => toggle(id)}
+          >
             toggle {id}
           </button>
         );
