@@ -32,6 +32,7 @@ export const SearchField: FC<React.HTMLProps<HTMLInputElement>> = ({
     <TextField
       type="text"
       placeholder="Search"
+      autoComplete="off"
       onChange={onChange}
       icon={
         <button className="absolute right-0 top-0 mt-3 mr-4">
