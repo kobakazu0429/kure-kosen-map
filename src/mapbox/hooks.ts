@@ -9,6 +9,9 @@ import { registerLayers } from "./layers";
 import { registerControls } from "./controls";
 import { registerPopups } from "./popup";
 
+import { searchGeojson } from "@/search";
+import * as kurekosen from "@/search/kurekosen.json";
+
 export class MapWrapper {
   constructor() {
     this.initialize = eventmit<mapboxgl.Map>();
@@ -39,6 +42,7 @@ export function useMapInitialize() {
     const map = new MapWrapper();
     setMap(map);
     register(map);
+    kurekosen.features.forEach((v) => searchGeojson.add(v as any));
 
     if (mapContainerRef.current) {
       map.createMapbox(mapContainerRef.current);
