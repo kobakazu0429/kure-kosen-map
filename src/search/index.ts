@@ -26,6 +26,7 @@ class SearchGeojson {
     const results = await this.index.search({
       query,
       limit: 25,
+      suggest: true,
       field: ["properties:title"],
     });
     return results;
