@@ -39,18 +39,15 @@ const Nav = () => {
       if (!map || !map.mapbox) return;
 
       const v = (e.target as any).value as string;
-      console.log(v);
       searchGeojson.search(v).then((results) => {
         if (results.length === 0) return;
         map.removeAllPopups();
-        console.log(results);
 
         results.forEach((r) => {
           const center = TurfCenterOfMass(r as any).geometry?.coordinates as
             | [number, number]
             | undefined;
           if (!center) return;
-          console.log(center);
 
           const p = new Popup()
             .setLngLat(center)
