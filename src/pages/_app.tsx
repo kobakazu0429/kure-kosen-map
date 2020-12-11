@@ -1,28 +1,16 @@
 import React from "react";
-import App from "next/app";
+import { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 
 import "../styles/index.css";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-export default class MyApp extends App {
-  static async getInitialProps({ Component, ctx }: any) {
-    let pageProps = {};
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <RecoilRoot>
+      <Component {...pageProps} />
+    </RecoilRoot>
+  );
+};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
-  render() {
-    const { Component, pageProps } = this.props;
-
-    return (
-      <RecoilRoot>
-        <Component {...pageProps} />
-      </RecoilRoot>
-    );
-  }
-}
+export default MyApp;

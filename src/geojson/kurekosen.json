@@ -4,7 +4,9 @@
     {
       "type": "Feature",
       "properties": {
-        "description": "建築科棟"
+        "id": 1,
+        "title": "建築学科棟",
+        "description": "建築学科棟"
       },
       "geometry": {
         "type": "Polygon",
@@ -21,7 +23,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 2,
+        "title": "管理棟",
+        "description": "管理棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -37,7 +43,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 3,
+        "title": "電気情報工学科棟",
+        "description": "電気情報工学科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -53,7 +63,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 4,
+        "title": "普通科棟",
+        "description": "普通科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -69,7 +83,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 5,
+        "title": "機械工学科棟",
+        "description": "機械工学科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -85,7 +103,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 6,
+        "title": "環境都市工学科棟",
+        "description": "環境都市工学科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -101,7 +123,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 7,
+        "title": "専攻科棟",
+        "description": "専攻科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -117,7 +143,11 @@
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "id": 8,
+        "title": "第二普通科棟",
+        "description": "第二普通科棟"
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import mapboxgl from "mapbox-gl";
+import mapboxgl, { Popup } from "mapbox-gl";
 import { eventmit, Eventmitter } from "eventmit";
 
 import { mapState } from "@/recoil/atom/kurekosenmap";
@@ -9,6 +9,9 @@ import { registerLayers } from "./layers";
 import { registerControls } from "./controls";
 import { registerPopups } from "./popup";
 
+import { searchGeojson } from "@/search";
+import * as kurekosen from "@/geojson/kurekosen.json";
+
 export class MapWrapper {
   constructor() {
     this.initialize = eventmit<mapboxgl.Map>();
@@ -16,12 +19,17 @@ export class MapWrapper {
 
   public mapbox?: mapboxgl.Map;
   public initialize: Eventmitter<mapboxgl.Map>;
+  public popups: Popup[] = [];
 
   public createMapbox(container: HTMLDivElement) {
     this.mapbox = new mapboxgl.Map({
       ...mapOptions,
       container,
     });
+  }
+
+  public removeAllPopups() {
+    this.popups.forEach((popup) => popup.remove());
   }
 }
 
@@ -39,6 +47,8 @@ export function useMapInitialize() {
     const map = new MapWrapper();
     setMap(map);
     register(map);
+
+    kurekosen.features.forEach((v) => searchGeojson.add(v as any));
 
     if (mapContainerRef.current) {
       map.createMapbox(mapContainerRef.current);

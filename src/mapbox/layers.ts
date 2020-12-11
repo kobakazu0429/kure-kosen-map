@@ -1,11 +1,13 @@
+import { FeatureCollection } from "geojson";
 import { MapWrapper } from "./hooks";
+import kurekosenGeojson from "../geojson/kurekosen.json";
 
 export const kureKosen: mapboxgl.Layer = {
   id: "kurekosen",
   type: "fill",
   source: {
     type: "geojson",
-    data: "/geojson/kurekosen.geojson",
+    data: kurekosenGeojson as FeatureCollection,
   },
   paint: {
     "fill-color": "#088",
