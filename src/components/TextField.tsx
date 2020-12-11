@@ -9,6 +9,7 @@ export const TextField: FC<Props & React.HTMLProps<HTMLInputElement>> = ({
   name,
   placeholder,
   icon = null,
+  onChange,
 }) => {
   return (
     <div className="relative text-gray-600 border-gray-400 border-2 rounded-full">
@@ -16,18 +17,22 @@ export const TextField: FC<Props & React.HTMLProps<HTMLInputElement>> = ({
         type={type}
         name={name}
         placeholder={placeholder}
-        className="bg-white h-10 px-5 pr-10 rounded-full text-sm border-gray-600 focus:outline-none"
+        onChange={onChange}
+        className="bg-white h-10 px-5 pr-10 w-full rounded-full text-sm border-gray-600 focus:outline-none"
       />
       {icon}
     </div>
   );
 };
 
-export const SearchField = () => {
+export const SearchField: FC<React.HTMLProps<HTMLInputElement>> = ({
+  onChange,
+}) => {
   return (
     <TextField
       type="text"
       placeholder="Search"
+      onChange={onChange}
       icon={
         <button className="absolute right-0 top-0 mt-3 mr-4">
           <svg
