@@ -1,5 +1,6 @@
 import React from "react";
 import { useMapInitialize } from "@/mapbox";
+import { LayerSwitcher } from "./LayerSwitcher";
 
 export const KureKosenMap = () => {
   const mapContainerRef = useMapInitialize();
@@ -27,8 +28,10 @@ export const KureKosenMap = () => {
       </style>
       <div
         ref={mapContainerRef}
-        className="w-full h-full lg:rounded-3xl outline-none"
-      />
+        className="w-full h-full lg:rounded-3xl outline-none z-0 relative"
+      >
+        <LayerSwitcher />
+      </div>
     </>
   );
 };
