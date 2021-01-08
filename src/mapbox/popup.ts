@@ -1,6 +1,6 @@
 import mapboxgl, { Map } from "mapbox-gl";
 import { MapWrapper } from "./hooks";
-import { popuppableLayerIds } from "./layers";
+import { panorama, popuppableLayerIds } from "./layers";
 
 const popupMap = (map: Map, layerId: string) => {
   map.on("mouseenter", layerId, () => {
@@ -22,5 +22,26 @@ const popupMap = (map: Map, layerId: string) => {
 export function registerPopups(map: MapWrapper) {
   map.initialize.on((mapbox) => {
     popuppableLayerIds.forEach((layer) => popupMap(mapbox, layer));
+  });
+}
+
+export function register360ImagePopups(
+  map: MapWrapper,
+  displayPanoramaFunc: any
+) {
+  map.initialize.on((mapbox) => {
+    const layerId = panorama.id;
+
+    mapbox.on("mouseenter", layerId, () => {
+      mapbox.getCanvas().style.cursor = "pointer";
+    });
+
+    mapbox.on("mouseleave", layerId, () => {
+      mapbox.getCanvas().style.cursor = "";
+    });
+
+    mapbox.on("click", layerId, () => {
+      displayPanoramaFunc();
+    });
   });
 }

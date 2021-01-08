@@ -20,7 +20,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "recoil": "^0.1.0",
-    "tailwindcss": "^1.9.5"
+    "tailwindcss": "^1.9.5",
+    "three": "^0.124.0"
   },
   "devDependencies": {
     "@kobakazu0429/eslint-config-typescript-react": "2.0.1",

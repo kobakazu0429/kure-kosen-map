@@ -18,7 +18,30 @@ export const kureKosen: mapboxgl.Layer = {
   },
 };
 
-const layers = [kureKosen];
+export const panorama: mapboxgl.Layer = {
+  id: "panorama",
+  type: "circle",
+  source: {
+    type: "geojson",
+    data: {
+      type: "Feature",
+      properties: {},
+      geometry: {
+        type: "Point",
+        coordinates: [132.6027327775955, 34.23139672503266],
+      },
+    },
+  },
+  paint: {
+    "circle-color": "#f00",
+    "circle-radius": 10,
+  },
+  layout: {
+    visibility: "visible",
+  },
+};
+
+const layers = [kureKosen, panorama];
 export const popuppableLayerIds = [kureKosen].map(({ id }) => id);
 export const toggleableLayerIds = [kureKosen].map(({ id }) => id);
 
