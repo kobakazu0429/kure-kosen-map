@@ -12,7 +12,7 @@
     "lint": "eslint --ext .ts,.tsx ./src --fix"
   },
   "dependencies": {
-    "@turf/turf": "^5.1.6",
+    "@turf/turf": "^6.0.0",
     "eventmit": "^1.1.0",
     "flexsearch": "^0.6.32",
     "mapbox-gl": "^1.12.0",
