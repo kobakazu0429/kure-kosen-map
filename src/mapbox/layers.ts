@@ -25,7 +25,9 @@ export const panorama: mapboxgl.Layer = {
     type: "geojson",
     data: {
       type: "Feature",
-      properties: {},
+      properties: {
+        filename: "room.jpg",
+      },
       geometry: {
         type: "Point",
         coordinates: [132.6027327775955, 34.23139672503266],
