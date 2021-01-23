@@ -1,20 +1,39 @@
-import { atom, useRecoilState, useSetRecoilState } from "recoil";
+import { atom, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
-const panoramaState = atom<boolean>({
-  key: "360ImageState",
+const panoramaIsOpenState = atom<boolean>({
+  key: "360ImageOpenState",
   default: false,
 });
 
 export const usePanorama = () => {
-  return useRecoilState(panoramaState);
+  return [
+    useRecoilValue(panoramaIsOpenState),
+    displayPanorama,
+    closePanorama,
+  ] as const;
 };
 
 export const displayPanorama = () => {
-  const setter = useSetRecoilState(panoramaState);
+  const setter = useSetRecoilState(panoramaIsOpenState);
   return () => setter(true);
 };
 
 export const closePanorama = () => {
-  const setter = useSetRecoilState(panoramaState);
+  const setter = useSetRecoilState(panoramaIsOpenState);
   return () => setter(false);
+};
+
+const panoramaFileState = atom({
+  key: "360ImageFileState",
+  default: "",
+});
+
+export const usePanoramaFileValue = () => {
+  return useRecoilValue(panoramaFileState);
+};
+
+export const setPanoramaFile = (filename: string) => {
+  const setter = useSetRecoilState(panoramaFileState);
+  return () => setter(filename);
 };
