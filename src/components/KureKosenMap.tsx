@@ -1,5 +1,6 @@
 import React from "react";
 import { useMapInitialize } from "@/mapbox";
+import { PanoramaViewer } from "./360image";
 
 export const KureKosenMap = () => {
   const mapContainerRef = useMapInitialize();
@@ -29,6 +30,7 @@ export const KureKosenMap = () => {
         ref={mapContainerRef}
         className="w-full h-full lg:rounded-3xl outline-none"
       />
+      <PanoramaViewer />
     </>
   );
 };

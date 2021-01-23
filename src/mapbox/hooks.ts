@@ -4,10 +4,11 @@ import mapboxgl, { Popup } from "mapbox-gl";
 import { eventmit, Eventmitter } from "eventmit";
 
 import { mapState } from "@/recoil/atom/kurekosenmap";
+import { displayPanorama, setPanoramaFile } from "./../recoil/atom/360image";
 import { mapOptions } from "./config";
 import { registerLayers } from "./layers";
 import { registerControls } from "./controls";
-import { registerPopups } from "./popup";
+import { register360ImagePopups, registerPopups } from "./popup";
 
 import { searchGeojson } from "@/search";
 import * as kurekosen from "@/geojson/kurekosen.json";
@@ -33,20 +34,24 @@ export class MapWrapper {
   }
 }
 
-function register(map: MapWrapper) {
-  registerLayers(map);
-  registerPopups(map);
-  registerControls(map);
-}
-
 export function useMapInitialize() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const setMap = useSetRecoilState(mapState);
 
+  const display = displayPanorama();
+  const setter = setPanoramaFile();
+
   useEffect(() => {
     const map = new MapWrapper();
     setMap(map);
-    register(map);
+    registerLayers(map);
+    registerPopups(map);
+    registerControls(map);
+    register360ImagePopups(map, (e) => {
+      display();
+      const filename = e.features?.map((f) => f.properties?.filename)[0];
+      setter(filename);
+    });
 
     kurekosen.features.forEach((v) => searchGeojson.add(v as any));
 
