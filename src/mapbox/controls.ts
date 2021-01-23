@@ -9,7 +9,7 @@ export function registerControls(map: MapWrapper) {
         showZoom: true,
         visualizePitch: true,
       }),
-      new mapboxgl.FullscreenControl(),
+      // new mapboxgl.FullscreenControl(),
       new mapboxgl.GeolocateControl({
         positionOptions: {
           enableHighAccuracy: true,

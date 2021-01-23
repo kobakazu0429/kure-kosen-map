@@ -4830,6 +4830,11 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+neuicons@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/neuicons/-/neuicons-1.9.0.tgz#c67d904e75e8f7253870c4251b55db7a1cd69387"
+  integrity sha512-GIFhq+csoueB0CLqraJurfrEDUa7du74L7nGUcfZycz1/cbhDEtkBBJZ27dvgzdmd0iJQGKW4qxhINz7eq+KyA==
+
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"

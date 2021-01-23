@@ -5,7 +5,11 @@ import mapboxgl, {
   MapboxGeoJSONFeature,
 } from "mapbox-gl";
 import { MapWrapper } from "./hooks";
-import { panorama, popuppableLayerIds } from "./layers";
+import {
+  panorama,
+  PanoramFeatureProperties,
+  popuppableLayerIds,
+} from "./layers";
 
 const popupMap = (map: Map, layerId: string) => {
   map.on("mouseenter", layerId, () => {
@@ -20,7 +24,12 @@ const popupMap = (map: Map, layerId: string) => {
     const description =
       features?.[0].properties?.description ?? "no description";
 
-    new mapboxgl.Popup().setLngLat(lngLat).setHTML(description).addTo(map);
+    const classNames = ["text-gray-900", "text-base"];
+    const popup = new mapboxgl.Popup()
+      .setLngLat(lngLat)
+      .setText(description)
+      .addTo(map);
+    classNames.map((c) => popup.addClassName(c));
   });
 };
 
@@ -31,7 +40,11 @@ export function registerPopups(map: MapWrapper) {
 }
 
 export type ClickListner = (
-  e: EventData & { features?: MapboxGeoJSONFeature[] } & MapMouseEvent
+  e: EventData & {
+    features?: Array<
+      MapboxGeoJSONFeature & { properties: PanoramFeatureProperties }
+    >;
+  } & MapMouseEvent
 ) => void;
 
 export function register360ImagePopups(
@@ -50,7 +63,7 @@ export function register360ImagePopups(
     });
 
     mapbox.on("click", layerId, (e) => {
-      clickListner(e);
+      clickListner(e as Parameters<ClickListner>[0]);
     });
   });
 }

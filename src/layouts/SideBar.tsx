@@ -48,7 +48,7 @@ export const SideBarLayout: FC<Props> = (props) => {
       <div className="flex flex-col w-full lg:w-1/4 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0 side-nav">
         <div className="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
           <span className="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
-            Flowtrail UI
+            KURE-NCT MAP
           </span>
           <button
             className="rounded-lg lg:hidden focus:outline-none focus:shadow-outline"
@@ -68,12 +68,15 @@ export const SideBarLayout: FC<Props> = (props) => {
 
       <style jsx>
         {`
-          .main {
-            height: calc(100% - 59px); // 59px is header nav height.
+          @media (max-width: 1024px) {
+            .main {
+              height: calc(100% - 59px); // 59px is header nav height.
+            }
           }
         `}
       </style>
-      <div className="w-full main lg:p-8 lg:h-full bg-gray-200 bg-opacity-25 outline-none">
+      <div className="w-full main lg:p-8 h-full bg-gray-200 bg-opacity-25 outline-none">
+        {" "}
         {props.mainComp}
       </div>
     </div>

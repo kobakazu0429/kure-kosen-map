@@ -1,3 +1,4 @@
+import { PanoramFeatureProperties } from "./../../mapbox/layers";
 import { atom, useSetRecoilState } from "recoil";
 import { useRecoilValue } from "recoil";
 
@@ -24,9 +25,12 @@ export const closePanorama = () => {
   return () => setter(false);
 };
 
-const panoramaFileState = atom({
+const panoramaFileState = atom<PanoramFeatureProperties>({
   key: "360ImageFileState",
-  default: "",
+  default: {
+    placename: "",
+    filename: "",
+  },
 });
 
 export const usePanoramaFileValue = () => {
@@ -35,5 +39,5 @@ export const usePanoramaFileValue = () => {
 
 export const setPanoramaFile = () => {
   const setter = useSetRecoilState(panoramaFileState);
-  return (filename: string) => setter(filename);
+  return (data: PanoramFeatureProperties) => setter(data);
 };

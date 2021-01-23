@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useCallback } from "react";
 import { Popup } from "mapbox-gl";
 import TurfCenterOfMass from "@turf/center-of-mass";
@@ -79,5 +80,12 @@ const Nav = () => {
 };
 
 export default function MapPage() {
-  return <SideBarLayout sideComp={<Nav />} mainComp={<KureKosenMap />} />;
+  return (
+    <>
+      <Head>
+        <title>KURE-NCT MAP</title>
+      </Head>
+      <SideBarLayout sideComp={<Nav />} mainComp={<KureKosenMap />} />
+    </>
+  );
 }
