@@ -1,5 +1,9 @@
-import { Eventmitter } from "eventmit";
-import mapboxgl, { EventData, Map, MapMouseEvent } from "mapbox-gl";
+import mapboxgl, {
+  Map,
+  EventData,
+  MapMouseEvent,
+  MapboxGeoJSONFeature,
+} from "mapbox-gl";
 import { MapWrapper } from "./hooks";
 import { panorama, popuppableLayerIds } from "./layers";
 
@@ -26,15 +30,14 @@ export function registerPopups(map: MapWrapper) {
   });
 }
 
+export type ClickListner = (
+  e: EventData & { features?: MapboxGeoJSONFeature[] } & MapMouseEvent
+) => void;
+
 export function register360ImagePopups(
   map: MapWrapper,
-  onClickCallback: Eventmitter<
-    MapMouseEvent & {
-      features?: mapboxgl.MapboxGeoJSONFeature[] | undefined;
-    } & EventData
-  >
+  clickListner: ClickListner
 ) {
-  let filename = "";
   map.initialize.on((mapbox) => {
     const layerId = panorama.id;
 
@@ -46,10 +49,8 @@ export function register360ImagePopups(
       mapbox.getCanvas().style.cursor = "";
     });
 
-    mapbox.on("click", layerId, (a) => {
-      filename = a.features?.map((f) => f.properties?.filename)[0];
-      onClickCallback.emit(a);
+    mapbox.on("click", layerId, (e) => {
+      clickListner(e);
     });
   });
-  return filename;
 }

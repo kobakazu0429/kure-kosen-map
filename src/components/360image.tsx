@@ -1,36 +1,18 @@
-import React, { useEffect, useRef, VFC } from "react";
-
+import React, { useEffect, VFC } from "react";
 import { Viewer } from "@/360image";
-import {
-  displayPanorama,
-  usePanorama,
-  setPanoramaFile,
-} from "@/recoil/atom/360image";
-import { useMap } from "@/mapbox";
+import { usePanorama, usePanoramaFileValue } from "@/recoil/atom/360image";
 
 const id = "360image";
 const width = 800;
 const height = 500;
 
-export const PanoramaViewer: VFC<{ filename: string }> = ({ filename }) => {
+export const PanoramaViewer: VFC<{ filename: string }> = () => {
   const [state, , closer] = usePanorama();
-  const file = useRef("");
-
-  const map = useMap();
-  const a = displayPanorama();
-  const _ss = setPanoramaFile(file.current);
-
-  map?.panoramaCallback.on((e) => {
-    console.log(e);
-    console.log(e.features?.map((f) => f.properties?.filename)[0]);
-
-    file.current = e.features?.map((f) => f.properties?.filename)[0];
-    a();
-  });
+  const filename = usePanoramaFileValue();
 
   useEffect(() => {
     new Viewer(id, filename, width, height);
-  }, [state]);
+  }, [filename]);
 
   if (!state) return null;
 

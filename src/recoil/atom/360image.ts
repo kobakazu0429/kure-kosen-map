@@ -9,8 +9,8 @@ const panoramaIsOpenState = atom<boolean>({
 export const usePanorama = () => {
   return [
     useRecoilValue(panoramaIsOpenState),
-    displayPanorama,
-    closePanorama,
+    displayPanorama(),
+    closePanorama(),
   ] as const;
 };
 
@@ -33,7 +33,7 @@ export const usePanoramaFileValue = () => {
   return useRecoilValue(panoramaFileState);
 };
 
-export const setPanoramaFile = (filename: string) => {
+export const setPanoramaFile = () => {
   const setter = useSetRecoilState(panoramaFileState);
-  return () => setter(filename);
+  return (filename: string) => setter(filename);
 };

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import mapboxgl, { EventData, MapMouseEvent, Popup } from "mapbox-gl";
+import mapboxgl, { Popup } from "mapbox-gl";
 import { eventmit, Eventmitter } from "eventmit";
 
 import { mapState } from "@/recoil/atom/kurekosenmap";
@@ -16,20 +16,10 @@ import * as kurekosen from "@/geojson/kurekosen.json";
 export class MapWrapper {
   constructor() {
     this.initialize = eventmit<mapboxgl.Map>();
-    this.panoramaCallback = eventmit<
-      MapMouseEvent & {
-        features?: mapboxgl.MapboxGeoJSONFeature[] | undefined;
-      } & EventData
-    >();
   }
 
   public mapbox?: mapboxgl.Map;
   public initialize: Eventmitter<mapboxgl.Map>;
-  public panoramaCallback: Eventmitter<
-    mapboxgl.MapMouseEvent & {
-      features?: mapboxgl.MapboxGeoJSONFeature[] | undefined;
-    } & mapboxgl.EventData
-  >;
   public popups: Popup[] = [];
 
   public createMapbox(container: HTMLDivElement) {
@@ -48,13 +38,20 @@ export function useMapInitialize() {
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const setMap = useSetRecoilState(mapState);
 
+  const display = displayPanorama();
+  const setter = setPanoramaFile();
+
   useEffect(() => {
     const map = new MapWrapper();
     setMap(map);
     registerLayers(map);
     registerPopups(map);
     registerControls(map);
-    register360ImagePopups(map, map.panoramaCallback);
+    register360ImagePopups(map, (e) => {
+      display();
+      const filename = e.features?.map((f) => f.properties?.filename)[0];
+      setter(filename);
+    });
 
     kurekosen.features.forEach((v) => searchGeojson.add(v as any));
 

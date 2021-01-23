@@ -2,8 +2,6 @@ import * as THREE from "three";
 
 export class Viewer {
   constructor(containerId: string, image: any, width: number, height: number) {
-    console.log(window);
-
     this.camera = new THREE.PerspectiveCamera(75, width / height, 1, 1100);
 
     const geometry = new THREE.SphereBufferGeometry(500, 60, 40);
@@ -28,11 +26,10 @@ export class Viewer {
 
     this.appendDom();
     this.animate();
-    // this.addResizeEvent();
     this.addEvent();
   }
 
-  container?: HTMLDivElement;
+  private container?: HTMLDivElement;
 
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
@@ -76,18 +73,6 @@ export class Viewer {
     this.container?.appendChild(this.renderer.domElement);
   }
 
-  private addResizeEvent() {
-    window.addEventListener(
-      "resize",
-      () => {
-        this.camera.aspect = window.innerWidth / window.innerHeight;
-        this.camera.updateProjectionMatrix();
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-      },
-      false
-    );
-  }
-
   private addEvent() {
     const onPointerDown = (event: any) => {
       if (event.isPrimary === false) return;
@@ -118,8 +103,6 @@ export class Viewer {
     const onPointerUp = (event: any) => {
       if (event.isPrimary === false) return;
 
-      this.isUserInteracting = false;
-
       document.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("pointerup", onPointerUp);
     };
@@ -133,6 +116,6 @@ export class Viewer {
     };
 
     this.container?.addEventListener("pointerdown", onPointerDown, false);
-    document.addEventListener("wheel", onDocumentMouseWheel, false);
+    this.container?.addEventListener("wheel", onDocumentMouseWheel, false);
   }
 }
