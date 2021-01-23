@@ -49,8 +49,10 @@ export function useMapInitialize() {
     registerControls(map);
     register360ImagePopups(map, (e) => {
       display();
-      const filename = e.features?.map((f) => f.properties?.filename)[0];
-      setter(filename);
+      if (e.features && e.features[0]) {
+        const { filename, placename } = e.features[0].properties;
+        setter({ filename, placename });
+      }
     });
 
     kurekosen.features.forEach((v) => searchGeojson.add(v as any));

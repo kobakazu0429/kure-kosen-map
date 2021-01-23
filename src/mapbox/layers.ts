@@ -18,6 +18,11 @@ export const kureKosen: mapboxgl.Layer = {
   },
 };
 
+export interface PanoramFeatureProperties {
+  placename: string;
+  filename: string;
+}
+
 export const panorama: mapboxgl.Layer = {
   id: "panorama",
   type: "circle",
@@ -26,6 +31,7 @@ export const panorama: mapboxgl.Layer = {
     data: {
       type: "Feature",
       properties: {
+        placename: "物理実験室",
         filename: "room.jpg",
       },
       geometry: {
