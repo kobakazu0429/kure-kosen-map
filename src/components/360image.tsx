@@ -6,13 +6,13 @@ const id = "360image";
 const width = 800;
 const height = 500;
 
-export const PanoramaViewer: VFC<{ filename: string }> = () => {
+export const PanoramaViewer: VFC = () => {
   const [state, , closer] = usePanorama();
   const filename = usePanoramaFileValue();
 
   useEffect(() => {
     new Viewer(id, filename, width, height);
-  }, [filename]);
+  }, [state, filename]);
 
   if (!state) return null;
 
