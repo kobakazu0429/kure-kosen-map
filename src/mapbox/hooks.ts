@@ -11,7 +11,7 @@ import { registerControls } from "./controls";
 import { register360ImagePopups, registerPopups } from "./popup";
 
 import { searchGeojson } from "@/search";
-import * as kurekosen from "@/geojson/kurekosen.json";
+import 建物 from "@/geojson/edited-建物.json";
 
 export class MapWrapper {
   constructor() {
@@ -55,7 +55,7 @@ export function useMapInitialize() {
       }
     });
 
-    kurekosen.features.forEach((v) => searchGeojson.add(v as any));
+    建物.features.forEach((v) => searchGeojson.add(v as any));
 
     if (mapContainerRef.current) {
       map.createMapbox(mapContainerRef.current);

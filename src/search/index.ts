@@ -11,7 +11,7 @@ class SearchGeojson {
       tokenize: (str) => str.replace(/[\x00-\x7F]/g, "").split(""),
       cache: true,
       doc: {
-        id: "properties:id",
+        id: "id",
         field: ["properties:title"],
       },
     }) as Index<SearchDocument>;

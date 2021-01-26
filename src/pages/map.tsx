@@ -2,6 +2,7 @@ import Head from "next/head";
 import React, { useCallback } from "react";
 import { Popup } from "mapbox-gl";
 import TurfCenterOfMass from "@turf/center-of-mass";
+import LineToPolygon from "@turf/line-to-polygon";
 
 import { SideBarLayout } from "@/layouts/SideBar";
 import { KureKosenMap } from "@/components/KureKosenMap";
@@ -45,6 +46,13 @@ const Nav = () => {
         map.removeAllPopups();
 
         results.forEach((r) => {
+          console.log(r);
+          if (r.geometry.type === "LineString") {
+            r = {
+              ...LineToPolygon(r.geometry),
+              properties: { ...r.properties },
+            };
+          }
           const center = TurfCenterOfMass(r as any).geometry?.coordinates as
             | [number, number]
             | undefined;
