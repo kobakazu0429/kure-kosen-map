@@ -21,9 +21,7 @@ const popupMap = (map: Map, layerId: string) => {
   });
 
   map.on("click", layerId, ({ features, lngLat }) => {
-    const description =
-      features?.[0].properties?.description ?? "no description";
-
+    const description = features?.[0].properties?.title ?? "unknown";
     const classNames = ["text-gray-900", "text-base"];
     const popup = new mapboxgl.Popup()
       .setLngLat(lngLat)
