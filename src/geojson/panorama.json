@@ -1,0 +1,208 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60322362184525, 34.23115944401323]
+      },
+      "properties": {
+        "placename": "インキュベーションスクウェア",
+        "filename": "R0010367.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6030904369239, 34.23269351465275]
+      },
+      "properties": {
+        "placename": "正門",
+        "filename": "R0010348.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60296722036958, 34.232481617310924]
+      },
+      "properties": { "placename": "", "filename": "R0010346.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60328748710964, 34.23229934757177]
+      },
+      "properties": { "placename": "", "filename": "R0010349.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60335389984806, 34.23132431983679]
+      },
+      "properties": { "placename": "", "filename": "R0010352.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60281450820946, 34.232161829287705]
+      },
+      "properties": { "placename": "", "filename": "R0010372.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60367802438418, 34.23171693126551]
+      },
+      "properties": { "placename": "", "filename": "R0010351.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60377485495354, 34.23220025531806]
+      },
+      "properties": { "placename": "", "filename": "R0010350.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60218292474747, 34.23290909862206]
+      },
+      "properties": {
+        "placename": "図書館",
+        "filename": "R0010356.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60189592838287, 34.232935709057884]
+      },
+      "properties": {
+        "placename": "co-ba",
+        "filename": "R0010360.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6022315976587, 34.232417866277714]
+      },
+      "properties": { "placename": "", "filename": "R0010377.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6023784367616, 34.232493737426125]
+      },
+      "properties": { "placename": "", "filename": "R0010376.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60228957702702, 34.23252250282036]
+      },
+      "properties": { "placename": "", "filename": "R0010374.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60180515191067, 34.23277408981252]
+      },
+      "properties": { "placename": "", "filename": "R0010379.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60200370000413, 34.232428647826254]
+      },
+      "properties": { "placename": "", "filename": "R0010355.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60148286819455, 34.23176927705998]
+      },
+      "properties": { "placename": "", "filename": "R0010354.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6018497896746, 34.23169115141849]
+      },
+      "properties": {
+        "placename": "実習工場(1)",
+        "filename": "R0010362.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60200736589272, 34.231639883287514]
+      },
+      "properties": {
+        "placename": "実習工場(2)",
+        "filename": "R0010365.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6022100590198, 34.2315720533787]
+      },
+      "properties": {
+        "placename": "実習工場(3)",
+        "filename": "R0010366.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60266089587995, 34.23184936124838]
+      },
+      "properties": { "placename": "", "filename": "R0010369.JPG" }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.60223388671875, 34.23113726818284]
+      },
+      "properties": {
+        "placename": "テニスコート",
+        "filename": "R0010353.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "placename": "物理実験室",
+        "filename": "R0010378.JPG"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [132.6027327775955, 34.23139672503266]
+      }
+    }
+  ]
+}
