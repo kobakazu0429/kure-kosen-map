@@ -1,4 +1,4 @@
-import React, { useEffect, VFC } from "react";
+import React, { useEffect, useRef, VFC } from "react";
 import { Viewer } from "@/360image";
 import { usePanorama, usePanoramaFileValue } from "@/recoil/atom/360image";
 
@@ -9,10 +9,12 @@ const height = 500;
 export const PanoramaViewer: VFC = () => {
   const [state, , closer] = usePanorama();
   const { filename, placename } = usePanoramaFileValue();
+  const viewer = useRef<Viewer | null>(null);
 
   useEffect(() => {
-    new Viewer(id, filename, width, height);
-  }, [state, filename]);
+    viewer.current?.dispose();
+    viewer.current = new Viewer(id, filename, width, height);
+  }, [filename]);
 
   if (!state) return null;
 

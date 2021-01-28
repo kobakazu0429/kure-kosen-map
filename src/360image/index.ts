@@ -11,10 +11,10 @@ export class Viewer {
 
     const texture = new THREE.TextureLoader().load(image);
     const material = new THREE.MeshBasicMaterial({ map: texture });
-    const mesh = new THREE.Mesh(geometry, material);
+    this.mesh = new THREE.Mesh(geometry, material);
 
     this.scene = new THREE.Scene();
-    this.scene.add(mesh);
+    this.scene.add(this.mesh);
 
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setPixelRatio(window.devicePixelRatio);
@@ -34,6 +34,7 @@ export class Viewer {
   private camera: THREE.PerspectiveCamera;
   private scene: THREE.Scene;
   private renderer: THREE.WebGLRenderer;
+  private mesh: THREE.Mesh<THREE.SphereBufferGeometry, THREE.MeshBasicMaterial>;
 
   private isUserInteracting = false;
   private onPointerDownMouseX = 0;
@@ -62,6 +63,9 @@ export class Viewer {
     this.camera.lookAt(x, y, z);
 
     this.renderer.render(this.scene, this.camera);
+  }
+  public dispose() {
+    this.container?.removeChild(this.renderer.domElement);
   }
 
   private animate() {

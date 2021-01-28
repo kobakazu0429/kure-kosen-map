@@ -51,7 +51,7 @@ export function useMapInitialize() {
       display();
       if (e.features && e.features[0]) {
         const { filename, placename } = e.features[0].properties;
-        setter({ filename, placename });
+        setter({ filename: `panorama/${filename}`, placename });
       }
     });
 

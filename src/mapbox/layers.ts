@@ -1,33 +1,26 @@
 import { MapWrapper } from "./hooks";
+import { FeatureCollection } from "geojson";
 import { 呉高専, popuppableLayers } from "./呉高専";
+import 学内写真 from "../geojson/panorama.json";
 
 export interface PanoramFeatureProperties {
   placename: string;
   filename: string;
 }
 
+const iconImage = "camera";
+
 export const panorama: mapboxgl.Layer = {
   id: "panorama",
-  type: "circle",
+  type: "symbol",
   source: {
     type: "geojson",
-    data: {
-      type: "Feature",
-      properties: {
-        placename: "物理実験室",
-        filename: "room.jpg",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [132.6027327775955, 34.23139672503266],
-      },
-    },
+    data: 学内写真 as FeatureCollection,
   },
-  paint: {
-    "circle-color": "#f00",
-    "circle-radius": 10,
-  },
+  minzoom: 16,
   layout: {
+    "icon-image": iconImage,
+    "icon-size": 0.9,
     visibility: "visible",
   },
 };
@@ -39,5 +32,13 @@ export const toggleableLayerIds = [].map(({ id }) => id);
 export function registerLayers(map: MapWrapper) {
   map.initialize.on((mapbox) => {
     layers.forEach((layer) => mapbox.addLayer(layer));
+
+    mapbox.loadImage(`icon/${iconImage}.png`, function (
+      error: any,
+      image: any
+    ) {
+      if (error) throw error;
+      mapbox.addImage(iconImage, image);
+    });
   });
 }
