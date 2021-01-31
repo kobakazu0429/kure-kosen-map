@@ -50,7 +50,7 @@ export default function TopPage() {
                 }
               `}
             </style>
-            <Link href="/map">
+            <Link href="/map" prefetch={false}>
               <a className="mx-auto hover:underline bg-white font-bold rounded-full my-4 lg:my-8 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                 使ってみる
               </a>
@@ -121,7 +121,7 @@ export default function TopPage() {
         </section>
 
         <div className="w-full flex items-center">
-          <Link href="/map">
+          <Link href="/map" prefetch={false}>
             <a className="mx-auto hover:underline bg-white font-bold rounded-full my-4 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               使ってみる
             </a>
