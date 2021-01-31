@@ -63,6 +63,7 @@ export default function TopPage() {
               src="https://cdn.dribbble.com/users/449035/screenshots/5612222/mr_worldwide.gif"
               width={754}
               height={350}
+              alt="ヒーローイメージ"
             />
           </div>
         </div>
@@ -79,7 +80,7 @@ export default function TopPage() {
               <h3 className="text-3xl font-bold leading-none mb-3">
                 教室や建物の検索機能
               </h3>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-700 mb-8">
                 探している場所を入力するだけで候補地のピンの出現します。
                 <br />
                 どこへでも簡単に行くことができます。
@@ -99,7 +100,7 @@ export default function TopPage() {
           <div className="flex flex-wrap flex-col-reverse sm:flex-row">
             <div className="w-full sm:w-1/2 p-6 mt-6">
               <Image
-                alt=""
+                alt="機能紹介の画像2"
                 className="h-56 w-full object-cover feature-img"
                 src="https://cdn.dribbble.com/users/2441144/screenshots/6176835/5.sfl_miasto_dribbble.gif"
                 width={464}
@@ -111,7 +112,7 @@ export default function TopPage() {
                 <h3 className="text-3xl font-bold leading-none mb-3">
                   360度のパノラマ画像で見学
                 </h3>
-                <p className="text-gray-600 mb-8">
+                <p className="text-gray-700 mb-8">
                   パノラマ画像で呉高専に行かなくても、学校中を見学できます。
                   <br />
                 </p>
