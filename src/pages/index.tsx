@@ -3,10 +3,6 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 
-export const config = {
-  unstable_runtimeJS: false,
-};
-
 export default function TopPage() {
   return (
     <>
