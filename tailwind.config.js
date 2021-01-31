@@ -4,7 +4,13 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: ["./src/**/*.tsx"],
-  theme: {},
+  theme: {
+    extend: {
+      height: {
+        "350px": "350px",
+      },
+    },
+  },
   variants: {},
   plugins: [],
 };
