@@ -55,3 +55,8 @@ export const panorama_image = {
   action: "click",
   category: "panorama_image",
 };
+
+export const building_name = {
+  action: "click",
+  category: "building_name",
+};

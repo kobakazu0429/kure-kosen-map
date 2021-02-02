@@ -1,3 +1,4 @@
+import { event } from "@/gtag";
 import mapboxgl, {
   Map,
   EventData,
@@ -10,6 +11,7 @@ import {
   PanoramFeatureProperties,
   popuppableLayerIds,
 } from "./layers";
+import { building_name } from "../gtag/event";
 
 const popupMap = (map: Map, layerId: string) => {
   map.on("mouseenter", layerId, () => {
@@ -21,13 +23,14 @@ const popupMap = (map: Map, layerId: string) => {
   });
 
   map.on("click", layerId, ({ features, lngLat }) => {
-    const description = features?.[0].properties?.title ?? "unknown";
+    const title = features?.[0].properties?.title ?? "unknown";
     const classNames = ["text-gray-900", "text-base"];
     const popup = new mapboxgl.Popup()
       .setLngLat(lngLat)
-      .setText(description)
+      .setText(title)
       .addTo(map);
     classNames.map((c) => popup.addClassName(c));
+    event({ ...building_name, label: title });
   });
 };
 
