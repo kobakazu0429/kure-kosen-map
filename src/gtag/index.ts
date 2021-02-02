@@ -8,7 +8,7 @@ export type Event = {
   action: string;
   category: string;
   label: string;
-  value?: number;
+  value?: number | string;
 };
 
 export const event = ({ action, category, label, value }: Event) => {

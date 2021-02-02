@@ -33,3 +33,15 @@ export const close_from_outside_modal = {
   category: "how_to_use_modal",
   label: "close_from_outside_modal",
 };
+
+export const search_with_click = {
+  action: "click",
+  category: "search_buildings",
+  label: "search_with_click",
+};
+
+export const search_detect_change = {
+  action: "change_input",
+  category: "search_buildings",
+  label: "search_detect_change",
+};

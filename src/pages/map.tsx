@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import { Popup } from "mapbox-gl";
 import TurfCenterOfMass from "@turf/center-of-mass";
 import LineToPolygon from "@turf/line-to-polygon";
@@ -12,11 +12,16 @@ import { searchGeojson } from "@/search";
 import { HowToUseModal } from "@/components/HowToUseModal";
 import { openHowToUseModal } from "@/recoil/atom/how-to-use-modal";
 import { event } from "@/gtag";
-import { open_how_to_use_modal } from "@/gtag/event";
+import {
+  open_how_to_use_modal,
+  search_with_click,
+  search_detect_change,
+} from "@/gtag/event";
 
 type VisibleStatus = "none" | "visible";
 
 const Nav = () => {
+  const searchWord = useRef("");
   const map = useMap();
   const opener = openHowToUseModal();
 
@@ -42,7 +47,42 @@ const Nav = () => {
       if (!map || !map.mapbox) return;
 
       const v = (e.target as any).value as string;
+      searchWord.current = v;
+      event({ ...search_detect_change, value: v });
       searchGeojson.search(v).then((results) => {
+        if (results.length === 0) return;
+        map.removeAllPopups();
+
+        results.forEach((r) => {
+          console.log(r);
+          if (r.geometry.type === "LineString") {
+            r = {
+              ...LineToPolygon(r.geometry),
+              properties: { ...r.properties },
+            };
+          }
+          const center = TurfCenterOfMass(r as any).geometry?.coordinates as
+            | [number, number]
+            | undefined;
+          if (!center) return;
+
+          const p = new Popup()
+            .setLngLat(center)
+            .setHTML(r.properties.title)
+            .addTo(map.mapbox!);
+          map.popups.push(p);
+        });
+      });
+    },
+    [map]
+  );
+
+  const search = useCallback(
+    (_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      if (!map || !map.mapbox || searchWord.current === "") return;
+
+      event({ ...search_with_click, value: searchWord.current });
+      searchGeojson.search(searchWord.current).then((results) => {
         if (results.length === 0) return;
         map.removeAllPopups();
 
@@ -72,7 +112,7 @@ const Nav = () => {
 
   return (
     <>
-      <SearchField onChange={suggestion} />
+      <SearchField onChange={suggestion} iconClick={search} />
       {["Blog", "Portfolio", "About", "Contact"].map((v) => (
         <button
           key={v}

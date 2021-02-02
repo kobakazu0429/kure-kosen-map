@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { DOMAttributes, FC } from "react";
 
 interface Props {
   icon: React.ReactChild;
@@ -25,9 +25,11 @@ export const TextField: FC<Props & React.HTMLProps<HTMLInputElement>> = ({
   );
 };
 
-export const SearchField: FC<React.HTMLProps<HTMLInputElement>> = ({
-  onChange,
-}) => {
+export const SearchField: FC<
+  React.HTMLProps<HTMLInputElement> & {
+    iconClick: DOMAttributes<HTMLButtonElement>["onClick"];
+  }
+> = ({ onChange, iconClick }) => {
   return (
     <TextField
       type="text"
@@ -35,7 +37,10 @@ export const SearchField: FC<React.HTMLProps<HTMLInputElement>> = ({
       autoComplete="off"
       onChange={onChange}
       icon={
-        <button className="absolute right-0 top-0 mt-3 mr-4">
+        <button
+          className="absolute right-0 top-0 mt-3 mr-4"
+          onClick={iconClick}
+        >
           <svg
             className="h-4 w-4 fill-current"
             x="0px"
