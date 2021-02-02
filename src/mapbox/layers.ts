@@ -2,6 +2,7 @@ import { MapWrapper } from "./hooks";
 import { FeatureCollection } from "geojson";
 import { 呉高専, popuppableLayers } from "./呉高専";
 import 学内写真 from "../geojson/panorama.json";
+import { aed, registerAED } from "./呉高専/AED";
 
 export interface PanoramFeatureProperties {
   placename: string;
@@ -25,13 +26,15 @@ export const panorama: mapboxgl.Layer = {
   },
 };
 
-const layers = [...呉高専, panorama];
+const layers = [...呉高専, panorama, aed];
 export const popuppableLayerIds = [...popuppableLayers].map(({ id }) => id);
 export const toggleableLayerIds = [].map(({ id }) => id);
 
 export function registerLayers(map: MapWrapper) {
   map.initialize.on((mapbox) => {
     layers.forEach((layer) => mapbox.addLayer(layer));
+
+    registerAED(mapbox);
 
     mapbox.loadImage(`icon/${iconImage}.png`, function (
       error: any,
