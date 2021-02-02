@@ -11,7 +11,6 @@ export default function TopPage() {
   return (
     <>
       <Head>
-        <title>KURE-NCT MAP</title>
         <style>
           {`
             @media (max-width: 768px) {
