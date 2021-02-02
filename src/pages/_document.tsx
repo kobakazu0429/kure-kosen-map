@@ -7,6 +7,10 @@ export default class MyDocument extends Document {
       <Html lang="ja" className="h-full">
         <Head>
           <style>{`#__next { height:100% } `}</style>
+          <meta
+            name="description"
+            content="呉高専の授業で学生によって作成させたWeb地図です。"
+          />
         </Head>
         <body className="h-full w-full">
           <Main />
