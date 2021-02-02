@@ -116,8 +116,8 @@ export default function TopPage() {
                 loop
                 muted
                 playsInline
-                width={754}
-                height={350}
+                width={464}
+                height={224}
                 disablePictureInPicture={false}
               />
             </div>
@@ -138,8 +138,8 @@ export default function TopPage() {
                 loop
                 muted
                 playsInline
-                width={754}
-                height={350}
+                width={464}
+                height={224}
                 disablePictureInPicture={false}
               />
             </div>
