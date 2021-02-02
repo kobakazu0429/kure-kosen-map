@@ -29,6 +29,7 @@ export const PanoramaViewer: VFC = () => {
         #${id} canvas {
           border-radius: 1.5rem;
           user-select: none;
+          touch-action: none;
         }
       `}</style>
       <div
