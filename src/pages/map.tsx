@@ -16,6 +16,7 @@ import {
   open_how_to_use_modal,
   search_with_click,
   search_detect_change,
+  toggle_layer,
 } from "@/gtag/event";
 
 type VisibleStatus = "none" | "visible";
@@ -26,7 +27,7 @@ const Nav = () => {
   const opener = openHowToUseModal();
 
   const toggle = useCallback(
-    (id: string) => {
+    (id: string, name: string) => {
       if (!map || !map.mapbox) return;
       const visibility: VisibleStatus = map.mapbox.getLayoutProperty(
         id,
@@ -35,8 +36,10 @@ const Nav = () => {
 
       if (visibility === "visible") {
         map.mapbox.setLayoutProperty(id, "visibility", "none");
+        event({ ...toggle_layer, label: name, value: "hidden" });
       } else {
         map.mapbox.setLayoutProperty(id, "visibility", "visible");
+        event({ ...toggle_layer, label: name, value: "visible" });
       }
     },
     [map]
@@ -126,7 +129,7 @@ const Nav = () => {
           <button
             className="block px-4 py-2 mt-2 w-full text-left text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
             key={id}
-            onClick={() => toggle(id)}
+            onClick={() => toggle(id, name)}
           >
             {name}の表示/非表示
           </button>

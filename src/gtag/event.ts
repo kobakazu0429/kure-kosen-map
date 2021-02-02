@@ -45,3 +45,8 @@ export const search_detect_change = {
   category: "search_buildings",
   label: "search_detect_change",
 };
+
+export const toggle_layer = {
+  action: "click",
+  category: "toggle_layer",
+};
