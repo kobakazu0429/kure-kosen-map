@@ -9,6 +9,10 @@ export const KureKosenMap = () => {
     <>
       <style jsx global>
         {`
+          html,
+          body {
+            overflow: hidden;
+          }
           canvas {
             outline: none;
           }

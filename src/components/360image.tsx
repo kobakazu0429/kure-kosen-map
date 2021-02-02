@@ -23,6 +23,7 @@ export const PanoramaViewer: VFC = () => {
       <style jsx global>{`
         #${id} canvas {
           border-radius: 1.5rem;
+          user-select: none;
         }
       `}</style>
       <div
