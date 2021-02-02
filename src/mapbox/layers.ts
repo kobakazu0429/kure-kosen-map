@@ -11,8 +11,9 @@ export interface PanoramFeatureProperties {
 
 const iconImage = "camera";
 
-export const panorama: mapboxgl.Layer = {
+export const panorama: mapboxgl.Layer & { name: string } = {
   id: "panorama",
+  name: "パノラマ画像",
   type: "symbol",
   source: {
     type: "geojson",
@@ -28,7 +29,10 @@ export const panorama: mapboxgl.Layer = {
 
 const layers = [...呉高専, panorama, aed];
 export const popuppableLayerIds = [...popuppableLayers].map(({ id }) => id);
-export const toggleableLayerIds = [].map(({ id }) => id);
+export const toggleableLayerIds = [aed, panorama].map(({ id, name }) => ({
+  id,
+  name,
+}));
 
 export function registerLayers(map: MapWrapper) {
   map.initialize.on((mapbox) => {
