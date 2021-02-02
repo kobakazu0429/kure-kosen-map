@@ -1,19 +1,24 @@
-import React, { useEffect, useRef, VFC } from "react";
+import React, { useEffect, useRef, useState, VFC } from "react";
 import { Viewer } from "@/360image";
 import { usePanorama, usePanoramaFileValue } from "@/recoil/atom/360image";
 
 const id = "panorama-container";
-const width = 800;
-const height = 500;
 
 export const PanoramaViewer: VFC = () => {
   const [state, , closer] = usePanorama();
+  const [size, setSize] = useState({ width: 0, height: 0 });
   const { filename, placename } = usePanoramaFileValue();
   const viewer = useRef<Viewer | null>(null);
 
   useEffect(() => {
+    const width = Math.min(window.innerWidth, 800);
+    const height = Math.min(window.innerHeight, 500);
+    setSize({ width, height });
+  }, []);
+
+  useEffect(() => {
     viewer.current?.dispose();
-    viewer.current = new Viewer(id, filename, width, height);
+    viewer.current = new Viewer(id, filename, size.width, size.height);
   }, [filename]);
 
   if (!state) return null;
@@ -33,8 +38,8 @@ export const PanoramaViewer: VFC = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width,
-          height,
+          width: size.width,
+          height: size.height,
         }}
       >
         <div
