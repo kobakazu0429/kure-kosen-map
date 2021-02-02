@@ -27,8 +27,6 @@ export const aed: mapboxgl.Layer & { name: string } = {
 
 export function registerAED(mapbox: mapboxgl.Map) {
   mapbox.loadImage(`icon/${iconImage}.png`, function (error: any, image: any) {
-    console.log(image);
-
     if (error) throw error;
     mapbox.addImage(iconImage, image);
   });
