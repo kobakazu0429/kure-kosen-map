@@ -29,7 +29,10 @@
         "type": "Point",
         "coordinates": [132.60296722036958, 34.232481617310924]
       },
-      "properties": { "placename": "", "filename": "R0010346.JPG" }
+      "properties": {
+        "placename": "普通科棟/管理棟/電気情報工学科棟/建築家棟 交差点",
+        "filename": "R0010346.JPG"
+      }
     },
     {
       "type": "Feature",
@@ -37,7 +40,7 @@
         "type": "Point",
         "coordinates": [132.60328748710964, 34.23229934757177]
       },
-      "properties": { "placename": "", "filename": "R0010349.JPG" }
+      "properties": { "placename": "管理棟", "filename": "R0010349.JPG" }
     },
     {
       "type": "Feature",
@@ -45,7 +48,7 @@
         "type": "Point",
         "coordinates": [132.60335389984806, 34.23132431983679]
       },
-      "properties": { "placename": "", "filename": "R0010352.JPG" }
+      "properties": { "placename": "専攻科棟入口", "filename": "R0010352.JPG" }
     },
     {
       "type": "Feature",
@@ -53,7 +56,10 @@
         "type": "Point",
         "coordinates": [132.60281450820946, 34.232161829287705]
       },
-      "properties": { "placename": "", "filename": "R0010372.JPG" }
+      "properties": {
+        "placename": "普通科棟/環境都市工学科棟/機械工学科棟/電気情報工学科棟 交差点",
+        "filename": "R0010372.JPG"
+      }
     },
     {
       "type": "Feature",
@@ -61,7 +67,7 @@
         "type": "Point",
         "coordinates": [132.60367802438418, 34.23171693126551]
       },
-      "properties": { "placename": "", "filename": "R0010351.JPG" }
+      "properties": { "placename": "自動販売機", "filename": "R0010351.JPG" }
     },
     {
       "type": "Feature",
@@ -69,7 +75,10 @@
         "type": "Point",
         "coordinates": [132.60377485495354, 34.23220025531806]
       },
-      "properties": { "placename": "", "filename": "R0010350.JPG" }
+      "properties": {
+        "placename": "管理棟横駐車場",
+        "filename": "R0010350.JPG"
+      }
     },
     {
       "type": "Feature",
@@ -99,7 +108,7 @@
         "type": "Point",
         "coordinates": [132.6022315976587, 34.232417866277714]
       },
-      "properties": { "placename": "", "filename": "R0010377.JPG" }
+      "properties": { "placename": "建築家棟倉庫", "filename": "R0010377.JPG" }
     },
     {
       "type": "Feature",
@@ -107,7 +116,7 @@
         "type": "Point",
         "coordinates": [132.6023784367616, 34.232493737426125]
       },
-      "properties": { "placename": "", "filename": "R0010376.JPG" }
+      "properties": { "placename": "基礎実験室", "filename": "R0010376.JPG" }
     },
     {
       "type": "Feature",
@@ -115,7 +124,10 @@
         "type": "Point",
         "coordinates": [132.60228957702702, 34.23252250282036]
       },
-      "properties": { "placename": "", "filename": "R0010374.JPG" }
+      "properties": {
+        "placename": "材料構造実験室",
+        "filename": "R0010374.JPG"
+      }
     },
     {
       "type": "Feature",
@@ -123,7 +135,10 @@
         "type": "Point",
         "coordinates": [132.60180515191067, 34.23277408981252]
       },
-      "properties": { "placename": "", "filename": "R0010379.JPG" }
+      "properties": {
+        "placename": "図書館棟前 広場",
+        "filename": "R0010379.JPG"
+      }
     },
     {
       "type": "Feature",
@@ -131,7 +146,7 @@
         "type": "Point",
         "coordinates": [132.60200370000413, 34.232428647826254]
       },
-      "properties": { "placename": "", "filename": "R0010355.JPG" }
+      "properties": { "placename": "体育館前", "filename": "R0010355.JPG" }
     },
     {
       "type": "Feature",
@@ -139,7 +154,7 @@
         "type": "Point",
         "coordinates": [132.60148286819455, 34.23176927705998]
       },
-      "properties": { "placename": "", "filename": "R0010354.JPG" }
+      "properties": { "placename": "運動場", "filename": "R0010354.JPG" }
     },
     {
       "type": "Feature",
@@ -180,7 +195,10 @@
         "type": "Point",
         "coordinates": [132.60266089587995, 34.23184936124838]
       },
-      "properties": { "placename": "", "filename": "R0010369.JPG" }
+      "properties": {
+        "placename": "交差点",
+        "filename": "R0010369.JPG"
+      }
     },
     {
       "type": "Feature",
