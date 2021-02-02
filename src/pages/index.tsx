@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function TopPage() {
   return (
@@ -58,12 +58,22 @@ export default function TopPage() {
           </div>
 
           <div className="w-full md:w-3/5 text-center">
-            <Image
-              className="w-full z-50 object-contain h-48 md:h-350px"
+            {/* <Image
               src="https://cdn.dribbble.com/users/449035/screenshots/5612222/mr_worldwide.gif"
               width={754}
               height={350}
               alt="ヒーローイメージ"
+            /> */}
+            <video
+              className="w-full z-50 object-contain h-48 md:h-350px"
+              src="mr_worldwide.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              width={754}
+              height={350}
+              disablePictureInPicture={false}
             />
           </div>
         </div>
@@ -88,23 +98,45 @@ export default function TopPage() {
             </div>
             <div className="w-full sm:w-1/2 p-6">
               {/* src="https://cdn.dribbble.com/users/363199/screenshots/2654846/cc-ptich-dribble_30fps.gif" */}
-              <Image
+              {/* <Image
                 alt="機能紹介の画像1"
                 className="h-56 w-full object-cover feature-img"
                 src="https://cdn.dribbble.com/users/40736/screenshots/2470871/map-pin-.gif"
                 width={464}
                 height={224}
+              /> */}
+              <video
+                className="h-56 w-full object-cover feature-img"
+                src="map-pin-.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                width={754}
+                height={350}
+                disablePictureInPicture={false}
               />
             </div>
           </div>
           <div className="flex flex-wrap flex-col-reverse sm:flex-row">
             <div className="w-full sm:w-1/2 p-6 mt-6">
-              <Image
+              {/* <Image
                 alt="機能紹介の画像2"
                 className="h-56 w-full object-cover feature-img"
                 src="https://cdn.dribbble.com/users/2441144/screenshots/6176835/5.sfl_miasto_dribbble.gif"
                 width={464}
                 height={224}
+              /> */}
+              <video
+                className="h-56 w-full object-cover feature-img"
+                src="sfl_miasto_dribbble.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                width={754}
+                height={350}
+                disablePictureInPicture={false}
               />
             </div>
             <div className="w-full sm:w-1/2 p-6 mt-6">
