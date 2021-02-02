@@ -4,6 +4,12 @@ export const side_by_hero_image = {
   label: "side_by_hero_image",
 };
 
+export const open_how_to_use_modal = {
+  action: "click",
+  category: "how_to_use_modal",
+  label: "open_how_to_use_modal",
+};
+
 export const close_from_icon = {
   action: "click",
   category: "how_to_use_modal",
