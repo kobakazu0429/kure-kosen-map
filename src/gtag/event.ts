@@ -50,3 +50,8 @@ export const toggle_layer = {
   action: "click",
   category: "toggle_layer",
 };
+
+export const panorama_image = {
+  action: "click",
+  category: "panorama_image",
+};
