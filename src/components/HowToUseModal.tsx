@@ -1,5 +1,7 @@
 import React, { VFC } from "react";
 import { useHowToUseModal } from "@/recoil/atom/how-to-use-modal";
+import { event } from "@/gtag";
+import { close_from_icon } from "@/gtag/event";
 
 export const HowToUseModal: VFC = () => {
   const [showModal, , closer] = useHowToUseModal();
@@ -20,7 +22,10 @@ export const HowToUseModal: VFC = () => {
               <h3 className="text-3xl font-semibold text-gray-900">使い方</h3>
               <button
                 className="p-1 ml-auto bg-transparent border-0 text-gray-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={closer}
+                onClick={() => {
+                  closer();
+                  event(close_from_icon);
+                }}
               >
                 <span className="bg-transparent text-gray-900 opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                   ×
