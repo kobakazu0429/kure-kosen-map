@@ -8,5 +8,16 @@ export const close_from_icon = {
   action: "click",
   category: "how_to_use_modal",
   label: "close_from_icon",
-  value: "1",
+};
+
+export const close_from_button = {
+  action: "click",
+  category: "how_to_use_modal",
+  label: "close_from_button",
+};
+
+export const close_from_outside_modal = {
+  action: "click",
+  category: "how_to_use_modal",
+  label: "close_from_outside_modal",
 };

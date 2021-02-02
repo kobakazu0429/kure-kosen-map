@@ -1,10 +1,19 @@
-import React, { VFC } from "react";
+import React, { useEffect, VFC, useRef } from "react";
 import { useHowToUseModal } from "@/recoil/atom/how-to-use-modal";
 import { event } from "@/gtag";
-import { close_from_icon } from "@/gtag/event";
+import {
+  close_from_button,
+  close_from_icon,
+  close_from_outside_modal,
+} from "@/gtag/event";
 
 export const HowToUseModal: VFC = () => {
   const [showModal, , closer] = useHowToUseModal();
+  const timer = useRef(0);
+
+  useEffect(() => {
+    timer.current = Date.now();
+  }, []);
 
   if (showModal === false) return null;
 
@@ -12,7 +21,11 @@ export const HowToUseModal: VFC = () => {
     <>
       <div
         className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-        onClick={closer}
+        onClick={() => {
+          closer();
+          const ms = Date.now() - timer.current;
+          event({ ...close_from_outside_modal, value: ms });
+        }}
       >
         <div className="relative w-full my-6 mx-auto max-w-2xl">
           {/*content*/}
@@ -24,7 +37,8 @@ export const HowToUseModal: VFC = () => {
                 className="p-1 ml-auto bg-transparent border-0 text-gray-900 opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                 onClick={() => {
                   closer();
-                  event(close_from_icon);
+                  const ms = Date.now() - timer.current;
+                  event({ ...close_from_icon, value: ms });
                 }}
               >
                 <span className="bg-transparent text-gray-900 opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -55,7 +69,11 @@ export const HowToUseModal: VFC = () => {
                 className="text-gray-900 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                 type="button"
                 style={{ transition: "all .15s ease" }}
-                onClick={closer}
+                onClick={() => {
+                  closer();
+                  const ms = Date.now() - timer.current;
+                  event({ ...close_from_button, value: ms });
+                }}
               >
                 閉じる
               </button>

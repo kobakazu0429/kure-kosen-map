@@ -8,10 +8,10 @@ export type Event = {
   action: string;
   category: string;
   label: string;
-  value?: string;
+  value?: number;
 };
 
-export const event = ({ action, category, label, value = "" }: Event) => {
+export const event = ({ action, category, label, value }: Event) => {
   if (!process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID) {
     return;
   }

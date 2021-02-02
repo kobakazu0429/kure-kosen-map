@@ -7,7 +7,7 @@ interface Window {
     fieldObject: {
       event_label: string;
       event_category: string;
-      value?: string;
+      value?: number;
     }
   ): void;
 }
