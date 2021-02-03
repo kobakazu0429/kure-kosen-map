@@ -12,6 +12,8 @@ import { register360ImagePopups, registerPopups } from "./popup";
 
 import { searchGeojson } from "@/search";
 import 建物 from "@/geojson/edited-建物.json";
+import { event } from "@/gtag";
+import { panorama_image } from "@/gtag/event";
 
 export class MapWrapper {
   constructor() {
@@ -52,6 +54,7 @@ export function useMapInitialize() {
       if (e.features && e.features[0]) {
         const { filename, placename } = e.features[0].properties;
         setter({ filename: `panorama/${filename}`, placename });
+        event({ ...panorama_image, label: placename });
       }
     });
 

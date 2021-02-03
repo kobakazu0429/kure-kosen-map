@@ -1,6 +1,8 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { event } from "@/gtag";
+import { bottom_button, side_by_hero_image } from "@/gtag/event";
 // import Image from "next/image";
 
 export const config = {
@@ -54,7 +56,12 @@ export default function TopPage() {
               `}
             </style>
             <Link href="/map" prefetch={false}>
-              <a className="mx-auto hover:underline bg-white font-bold rounded-full my-4 lg:my-8 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              <a
+                className="mx-auto hover:underline bg-white font-bold rounded-full my-4 lg:my-8 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                onClick={() => {
+                  event(side_by_hero_image);
+                }}
+              >
                 使ってみる
               </a>
             </Link>
@@ -158,7 +165,12 @@ export default function TopPage() {
 
         <div className="w-full flex items-center">
           <Link href="/map" prefetch={false}>
-            <a className="mx-auto hover:underline bg-white font-bold rounded-full my-4 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <a
+              className="mx-auto hover:underline bg-white font-bold rounded-full my-4 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              onClick={() => {
+                event(bottom_button);
+              }}
+            >
               使ってみる
             </a>
           </Link>

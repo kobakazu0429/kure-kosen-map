@@ -33,6 +33,34 @@ export default class MyDocument extends Document {
           <meta name="twitter:title" content={title} />
           <meta name="twitter:description" content={description} />
           <meta name="twitter:image" content={ogp_url} />
+
+          {/* Google Analytics */}
+          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID && (
+            <>
+              <script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID}`}
+              />
+              <script
+                dangerouslySetInnerHTML={{
+                  __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${
+                    process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
+                  }', {
+                    page_path: window.location.pathname,
+                    ${
+                      process.env.NODE_ENV === "development"
+                        ? `cookieDomain: 'none', debug_mode: true`
+                        : ""
+                    }
+                  });`,
+                }}
+              />
+            </>
+          )}
         </Head>
         <body className="h-full w-full">
           <Main />
