@@ -60,3 +60,9 @@ export const building_name = {
   action: "click",
   category: "building_name",
 };
+
+export const answer_questionnaire_from_sidebar = {
+  action: "click",
+  category: "answer_questionnaire",
+  label: "answer_questionnaire_from_sidebar",
+};

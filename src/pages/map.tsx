@@ -17,6 +17,7 @@ import {
   search_with_click,
   search_detect_change,
   toggle_layer,
+  answer_questionnaire_from_sidebar,
 } from "@/gtag/event";
 
 type VisibleStatus = "none" | "visible";
@@ -116,14 +117,6 @@ const Nav = () => {
   return (
     <>
       <SearchField onChange={suggestion} iconClick={search} />
-      {["Blog", "Portfolio", "About", "Contact"].map((v) => (
-        <button
-          key={v}
-          className="block px-4 py-2 mt-2 w-full text-left text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-        >
-          {v}
-        </button>
-      ))}
       {toggleableLayerIds.map(({ id, name }) => {
         return (
           <button
@@ -145,6 +138,16 @@ const Nav = () => {
       >
         使い方
       </button>
+
+      <a
+        className="block px-4 py-2 mt-2 w-full text-left text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+        onClick={() => {
+          event(answer_questionnaire_from_sidebar);
+        }}
+        href="https://forms.gle/LYTgYgYdT34G1mqc6"
+      >
+        アンケートに答える
+      </a>
     </>
   );
 };
