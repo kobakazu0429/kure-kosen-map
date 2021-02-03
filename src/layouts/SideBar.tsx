@@ -58,7 +58,7 @@ export const SideBarLayout: FC<Props> = (props) => {
           </button>
         </div>
         <nav
-          className={`flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto ${
+          className={`flex-grow lg:block px-4 pb-4 md:pb-0 md:overflow-y-auto ${
             visible ? "block" : "hidden"
           }`}
         >
