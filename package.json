@@ -28,7 +28,7 @@
     "@kobakazu0429/eslint-config-typescript-react": "2.0.1",
     "@types/geojson": "7946.0.7",
     "@types/mapbox-gl": "1.12.8",
-    "@types/node": "14.14.35",
+    "@types/node": "14.14.36",
     "@types/react": "17.0.3",
     "@types/react-dom": "17.0.3",
     "eslint": "7.19.0",
