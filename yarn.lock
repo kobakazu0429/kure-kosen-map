@@ -162,42 +162,42 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.0.tgz#6c9eafc78c1529248f8f4d92b0799a712b6052c6"
   integrity sha512-i9YbZPN3QgfighY/1X1Pu118VUz2Fmmhd6b2n0/O8YVgGGfw0FbUYoA97k7FkpGJ+pLCFEDLUmAPPV4D1kpeFw==
 
-"@kobakazu0429/eslint-config-base@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-base/-/eslint-config-base-2.0.1.tgz#324d26c89472cfe3bdf4a4ddeba5a86b6bce507d"
-  integrity sha512-YDSvFH8KrCAqIHpGZIMkiwgkrp1OaYpyuqlPti1BYbdQ1m8/mKsNoFs/1dzoSfCbDCbrFyg2dd4veonLCkuedg==
+"@kobakazu0429/eslint-config-base@*":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-base/-/eslint-config-base-2.0.3.tgz#e2d7b21a88a14e0de6f5edf603eaa529a59f4f61"
+  integrity sha512-x/v97rdx/okDWlHGSnPmiW2uvT0oGIeKunVINkyeDu/1FU6Ah3h1K878pkQJH2LvXDWFxKpmGwYqIV3nlWpiBQ==
   dependencies:
     eslint-config-airbnb-base "^14.2.0"
-    eslint-config-prettier "^6.11.0"
+    eslint-config-prettier "^8.0.0"
     eslint-plugin-prettier "^3.1.4"
     prettier "^2.0.5"
 
-"@kobakazu0429/eslint-config-typescript-react@2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-typescript-react/-/eslint-config-typescript-react-2.0.1.tgz#84627f43583718f9aaa485e3d8a862e095877961"
-  integrity sha512-6F3LCsBdNo5inRU5OYgD4DqhWdq9TAS7lZfN7kbex26kjA+0jH82PBIfp9VA+75r/KgeGx4zqVJGFepE5jehHQ==
+"@kobakazu0429/eslint-config-typescript-react@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-typescript-react/-/eslint-config-typescript-react-2.1.0.tgz#50823bb0cff17a2a2cee56e0c3cce247d58c102e"
+  integrity sha512-/jYyD3MNEsvjnLhCiDApj5zC9cQrSxOwdhmeWY020EUco8XugMdNLSKwZolbbYcOev+KFMPGimyT0Khqu7ihug==
   dependencies:
-    "@kobakazu0429/eslint-config-typescript" "^2.0.1"
+    "@kobakazu0429/eslint-config-typescript" "^2.1.0"
     "@typescript-eslint/eslint-plugin" "^4.0.0"
     "@typescript-eslint/parser" "^4.0.0"
     eslint-config-airbnb "^18.2.0"
-    eslint-config-prettier "^6.11.0"
+    eslint-config-prettier "^8.0.0"
     eslint-plugin-jsx-a11y "^6.3.1"
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-react "^7.20.0"
     eslint-plugin-react-hooks "^4.0.4"
     prettier "^2.0.5"
 
-"@kobakazu0429/eslint-config-typescript@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-typescript/-/eslint-config-typescript-2.0.1.tgz#2c9814ee7986be5f7ad061460ab09c80a8e94672"
-  integrity sha512-mbqXz/tLrB45IvEq55nDqY3mx0HiDO8XEq4O+jnjjkHU+0e7aZhLdlVBld19FXBIL8Oh/6wnI1FRK9k2xZh1NQ==
+"@kobakazu0429/eslint-config-typescript@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@kobakazu0429/eslint-config-typescript/-/eslint-config-typescript-2.1.0.tgz#c72f67e32e5e3e43db6dceafd5f179fb3d754934"
+  integrity sha512-CbqI3xkeMUsFx+ZmyXCjSczWaIkbBA71oxV1NkUQ2PF5HD75W6MyiDTEDe3k69do/qNh7L7XrLub2tcNLz3zBA==
   dependencies:
-    "@kobakazu0429/eslint-config-base" "^2.0.1"
+    "@kobakazu0429/eslint-config-base" "*"
     "@typescript-eslint/eslint-plugin" "^4.0.0"
     "@typescript-eslint/parser" "^4.0.0"
     eslint-config-airbnb-base "^14.2.0"
-    eslint-config-prettier "^6.11.0"
+    eslint-config-prettier "^8.0.0"
     eslint-plugin-prettier "^3.1.4"
     prettier "^2.0.5"
 
@@ -3276,12 +3276,10 @@ eslint-config-airbnb@^18.2.0:
     object.assign "^4.1.0"
     object.entries "^1.1.2"
 
-eslint-config-prettier@^6.11.0:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.14.0.tgz#390e7863a8ae99970981933826476169285b3a27"
-  integrity sha512-DbVwh0qZhAC7CNDWcq8cBdK6FcVHiMTKmCypOPWeZkp9hJ8xYwTaWSa6bb6cjfi8KOeJy0e9a8Izxyx+O4+gCQ==
-  dependencies:
-    get-stdin "^6.0.0"
+eslint-config-prettier@^8.0.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.1.0.tgz#4ef1eaf97afe5176e6a75ddfb57c335121abc5a6"
+  integrity sha512-oKMhGv3ihGbCIimCAjqkdzx2Q+jthoqnXSP+d86M9tptwugycmTFdVR4IpLgq2c4SHifbwO90z2fQ8/Aio73yw==
 
 eslint-plugin-jsx-a11y@^6.3.1:
   version "6.3.1"
@@ -3797,11 +3795,6 @@ get-intrinsic@^1.0.0:
     function-bind "^1.1.1"
     has "^1.0.3"
     has-symbols "^1.0.1"
-
-get-stdin@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
-  integrity sha512-jp4tHawyV7+fkkSKyvjuLZswblUtz+SQKzSWnBbii16BuZksJlU1wuBYXY75r+duh/llF1ur6oNwi+2ZzjKZ7g==
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
