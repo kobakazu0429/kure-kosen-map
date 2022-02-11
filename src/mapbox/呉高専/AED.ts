@@ -9,7 +9,7 @@ export interface PanoramFeatureProperties {
 
 const iconImage = "AED";
 
-export const aed: mapboxgl.Layer & { name: string } = {
+export const aed: mapboxgl.SymbolLayer & { name: string } = {
   id: "AED",
   name: "AED",
   type: "symbol",

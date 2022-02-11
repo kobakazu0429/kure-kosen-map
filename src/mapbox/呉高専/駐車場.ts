@@ -1,7 +1,7 @@
 import { FeatureCollection } from "geojson";
 import data from "../../geojson/edited-駐車場.json";
 
-export const 駐車場: mapboxgl.Layer[] = [
+export const 駐車場: mapboxgl.AnyLayer[] = [
   {
     id: "駐車場",
     type: "fill",
