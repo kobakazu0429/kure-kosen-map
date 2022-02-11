@@ -2512,6 +2512,11 @@ grid-index@^1.1.0:
   resolved "https://registry.yarnpkg.com/grid-index/-/grid-index-1.1.0.tgz#97f8221edec1026c8377b86446a7c71e79522ea7"
   integrity sha512-HZRwumpOGUrHyxO5bqKZL0B0GlUpwtCAzZ42sgxUPniu33R1LSFH5yrIcBCHjkctCAh3mtWKcKd9J4vDDdeVHA==
 
+hamt_plus@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/hamt_plus/-/hamt_plus-1.0.2.tgz#e21c252968c7e33b20f6a1b094cd85787a265601"
+  integrity sha1-4hwlKWjH4zsg9qGwlM2FeHomVgE=
+
 has-bigints@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/has-bigints/-/has-bigints-1.0.1.tgz#64fe6acb020673e3b78db035a5af69aa9d07b113"
@@ -3661,10 +3666,12 @@ readable-stream@^3.0.2:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
-recoil@^0.1.0:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.1.2.tgz#844c612f535826dbe54c977761a67ded16f6d063"
-  integrity sha512-hIRrHlkmW4yITlBFprVYjVPhzPKYrJKoaDrrJtAtbkMeXfXaa/XE5OlyR10n+rNfnKWNToCKb3Z4fo86IGjkzg==
+recoil@^0.6.0:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/recoil/-/recoil-0.6.1.tgz#6fdf1ba6cb20b5a2e54ec4abcbdaa287e8a03fa2"
+  integrity sha512-J7oT3LZl2vpyFClgSUpOQjpykz84VSX/NJE/PavAtR8n7Z+whEdVBPUtwc2TEWjONeL/lJmiac2XQ+qEOQA52Q==
+  dependencies:
+    hamt_plus "1.0.2"
 
 reduce-css-calc@^2.1.6:
   version "2.1.7"
