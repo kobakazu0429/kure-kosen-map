@@ -11,7 +11,7 @@ export interface PanoramFeatureProperties {
 
 const iconImage = "camera";
 
-export const panorama: mapboxgl.Layer & { name: string } = {
+export const panorama: mapboxgl.SymbolLayer & { name: string } = {
   id: "panorama",
   name: "パノラマ画像",
   type: "symbol",
