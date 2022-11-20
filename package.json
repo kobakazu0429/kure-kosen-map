@@ -29,7 +29,7 @@
     "@types/geojson": "7946.0.10",
     "@types/mapbox-gl": "1.13.3",
     "@types/node": "16.11.45",
-    "@types/react": "17.0.47",
+    "@types/react": "18.0.25",
     "@types/react-dom": "17.0.17",
     "eslint": "8.10.0",
     "postcss-flexbugs-fixes": "5.0.2",
